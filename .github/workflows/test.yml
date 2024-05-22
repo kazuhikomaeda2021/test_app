@@ -32,6 +32,7 @@ jobs:
                 --json nameWithOwner,name,owner,url,description,repositoryTopics,createdAt,updatedAt,pushedAt,openGraphImageUrl \
                 --jq .[]
                 echo "${list}"
+                cat repos1 repos2 | jq -r .[].name
 #               gh auth login --with-token <<< "${TOKEN}"
             - uses: actions/checkout@v4
             - name: Run sh
