@@ -38,6 +38,7 @@ function main() {
       archived=""
     fi
     echo "| ${name} | https://github.com/${ORGANIZATION}/${name} | | ${archived} |"
+    echo "${list_repo}"
   done < <(list_repo)
 }
 
