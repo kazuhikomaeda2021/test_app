@@ -5,6 +5,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+            - name: list
+              run: |
+                gh auth login --with-token
+                gh repo list baleen-studio > a.txt
+                cat a.txt
+                echo "$(<a.txt)"
+                echo "hogehoge"
+                gh status
             - name: Generate token
               id: generate_token
               uses: tibdex/github-app-token@v1
@@ -21,17 +29,6 @@ jobs:
                 echo "Access Token: ${GITHUB_TOKEN:2}"
                 echo "Access Token: ${GITHUB_TOKEN:3}"
                 echo "Access Token: ${GITHUB_TOKEN:4}"
-            - name: list
-              env:
-                GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-                TOKEN: ${{ steps.generate_token.outputs.token }}
-              run: |
-                gh auth login --with-token
-                gh repo list baleen-studio > a.txt
-                cat a.txt
-                echo "$(<a.txt)"
-                echo "hogehoge"
-                gh status
             - name: Send a repo list
               env:
                 GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
