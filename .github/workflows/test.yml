@@ -30,6 +30,7 @@ jobs:
                 cat a.txt
                 echo "$(<a.txt)"
                 echo "hogehoge"
+                gh status
             - name: Send a repo list
               env:
                 GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
