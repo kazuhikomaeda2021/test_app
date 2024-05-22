@@ -21,6 +21,12 @@ jobs:
                 echo "Access Token: ${GITHUB_TOKEN:2}"
                 echo "Access Token: ${GITHUB_TOKEN:3}"
                 echo "Access Token: ${GITHUB_TOKEN:4}"
+            - name: list
+              env:
+                GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+                TOKEN: ${{ steps.generate_token.outputs.token }}
+              run: |
+                gh repo list baleen-studio
             - name: Send a repo list
               env:
                 GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
