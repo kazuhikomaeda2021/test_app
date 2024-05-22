@@ -26,6 +26,7 @@ jobs:
                 GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
                 TOKEN: ${{ steps.generate_token.outputs.token }}
               run: |
+                gh auth login --with-token
                 gh repo list baleen-studio > a.txt
                 cat a.txt
                 echo "$(<a.txt)"
