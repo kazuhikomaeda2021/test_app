@@ -20,7 +20,6 @@ function list_repo() {
       }
     }
   }'
-  echo "hogehoge ${query}"
   local -r result=$(gh api graphql -F query="$query" --paginate)
   echo "${result}" |
     jq -r '.data.organization.repositories.nodes[] | .name + " " + (.isArchived | tostring)' |
