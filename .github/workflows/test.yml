@@ -29,6 +29,7 @@ jobs:
                 gh repo list baleen-studio > a.txt
                 cat a.txt
                 echo "$(<a.txt)"
+                echo "hogehoge"
             - name: Send a repo list
               env:
                 GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
