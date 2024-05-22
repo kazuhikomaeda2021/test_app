@@ -38,7 +38,7 @@ function main() {
       archived=""
     fi
     echo "| ${name} | https://github.com/${ORGANIZATION}/${name} | | ${archived} |"
-    echo "${line}"
+    echo "hogehoge ${line}"
   done < <(list_repo)
 }
 
