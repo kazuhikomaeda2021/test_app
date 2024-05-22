@@ -3,7 +3,7 @@
 set -euCo pipefail
 
 # constants
-readonly ORGANIZATION="baleen-studio"
+readonly ORGANIZATION="kazuhikomaeda2021"
 
 function list_repo() {
   local -r query='query($endCursor: String) {
@@ -20,6 +20,7 @@ function list_repo() {
       }
     }
   }'
+  echo "hogehoge ${query}"
   local -r result=$(gh api graphql -F query="$query" --paginate)
   echo "${result}" |
     jq -r '.data.organization.repositories.nodes[] | .name + " " + (.isArchived | tostring)' |
@@ -40,6 +41,8 @@ function main() {
     echo "| ${name} | https://github.com/${ORGANIZATION}/${name} | | ${archived} |"
     echo "hogehoge ${line}"
   done < <(list_repo)
+
+  echo "hogehoge end"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
