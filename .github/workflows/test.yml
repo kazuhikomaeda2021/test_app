@@ -22,6 +22,8 @@ jobs:
                 echo "Access Token: ${GITHUB_TOKEN:3}"
                 echo "Access Token: ${GITHUB_TOKEN:4}"
             - name: list
+              env:
+                GH_TOKEN: ${{ github.token }}
               run: |
                 gh status
                 unset GITHUB_TOKEN
